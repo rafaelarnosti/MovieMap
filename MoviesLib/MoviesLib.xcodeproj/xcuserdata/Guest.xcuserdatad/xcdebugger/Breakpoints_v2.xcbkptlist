@@ -26,12 +26,12 @@
                   moduleName = "MoviesLib"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Guest/Downloads/Projeto%20Inicial/MoviesLib/MoviesLib/TheatersMapViewController.swift"
-                  timestampString = "526430482.643301"
+                  timestampString = "526438091.018741"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
                   endingLineNumber = "0"
-                  offsetFromSymbolStart = "4">
+                  offsetFromSymbolStart = "12">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -41,12 +41,12 @@
                   moduleName = "MoviesLib"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Guest/Downloads/Projeto%20Inicial/MoviesLib/MoviesLib/TheatersMapViewController.swift"
-                  timestampString = "526430482.646587"
+                  timestampString = "526438091.020959"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "12"
-                  endingLineNumber = "12"
-                  offsetFromSymbolStart = "118">
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "80">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -56,12 +56,12 @@
                   moduleName = "MoviesLib"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Guest/Downloads/Projeto%20Inicial/MoviesLib/MoviesLib/TheatersMapViewController.swift"
-                  timestampString = "526430482.647919"
+                  timestampString = "526438091.023883"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
                   endingLineNumber = "0"
-                  offsetFromSymbolStart = "23">
+                  offsetFromSymbolStart = "32">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -71,12 +71,12 @@
                   moduleName = "MoviesLib"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Guest/Downloads/Projeto%20Inicial/MoviesLib/MoviesLib/TheatersMapViewController.swift"
-                  timestampString = "526430482.649174"
+                  timestampString = "526438091.025219"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
                   endingLineNumber = "0"
-                  offsetFromSymbolStart = "4">
+                  offsetFromSymbolStart = "12">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -86,12 +86,12 @@
                   moduleName = "MoviesLib"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Guest/Downloads/Projeto%20Inicial/MoviesLib/MoviesLib/TheatersMapViewController.swift"
-                  timestampString = "526430482.650427"
+                  timestampString = "526438091.026516"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "12"
-                  endingLineNumber = "12"
-                  offsetFromSymbolStart = "105">
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "40">
                </Location>
             </Locations>
          </BreakpointContent>

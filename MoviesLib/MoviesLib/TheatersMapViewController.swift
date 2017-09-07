@@ -15,13 +15,34 @@ class TheatersMapViewController: UIViewController {
     var theaters: [Theater] = []
     var theater: Theater!
     var currentElement: String!
+    lazy var locationManager = CLLocationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
         loadXML()
-        
-        
+        requestUserLocationAuthorization()
+    }
+    
+    func requestUserLocationAuthorization(){
+        if CLLocationManager.locationServicesEnabled(){
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.allowsBackgroundLocationUpdates = true
+            locationManager.pausesLocationUpdatesAutomatically = true
+            
+            switch CLLocationManager.authorizationStatus(){
+            case .authorizedAlways, .authorizedWhenInUse:
+                print("Liberaado")
+            case .denied:
+                print("fudeu")
+            case .notDetermined:
+                print("Ainda não liberou")
+                locationManager.requestWhenInUseAuthorization()
+            case .restricted:
+                print("Não tem acesso a bagaça toda")
+            }
+        }
     }
     
     func addTheaters(){
@@ -112,4 +133,20 @@ extension TheatersMapViewController:MKMapViewDelegate{
         
         return annotationView
     }
+}
+
+extension TheatersMapViewController : CLLocationManagerDelegate{
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .authorizedWhenInUse:
+            mapView.showsUserLocation = true
+        default:
+            break
+        }
+    }
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        print(userLocation.location!.speed)
+    }
+    
 }
