@@ -11,6 +11,8 @@ import MapKit
 
 class TheatersMapViewController: UIViewController {
     
+    @IBOutlet weak var SerachBar: UISearchBar!
+
     @IBOutlet weak var mapView: MKMapView!    
     var theaters: [Theater] = []
     var theater: Theater!
@@ -20,6 +22,7 @@ class TheatersMapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
+        SerachBar.delegate = self
         loadXML()
         requestUserLocationAuthorization()
     }
@@ -147,6 +150,15 @@ extension TheatersMapViewController : CLLocationManagerDelegate{
     }
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
         print(userLocation.location!.speed)
+        
+        let region  = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 100, 100)
+        mapView.setRegion(region, animated: true)
     }
     
+}
+
+extension TheatersMapViewController:UISearchBarDelegate{
+    func searchBarResultsListButtonClicked(_ searchBar: UISearchBar) {
+        //searchBar.text
+    }
 }
