@@ -18,8 +18,9 @@ class TheatersMapViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        mapView.delegate = self
         loadXML()
+        
         
     }
     
@@ -91,4 +92,24 @@ class TheatersMapViewController: UIViewController {
         func parserDidEndDocument(_ parser: XMLParser) {
             addTheaters()
         }
+}
+extension TheatersMapViewController:MKMapViewDelegate{
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        var annotationView : MKAnnotationView!
+        
+        if annotation is TheaterAnnotation{
+            annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "Theater")
+            
+            if annotationView == nil{
+                annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "Theater")
+                annotationView.image = UIImage(named: "theaterIcon")
+                annotationView.canShowCallout = true
+            }
+            else{
+                annotationView.annotation = annotation
+            }
+        }
+        
+        return annotationView
+    }
 }
