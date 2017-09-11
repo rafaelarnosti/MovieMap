@@ -28,6 +28,27 @@ class TheatersMapViewController: UIViewController {
         requestUserLocationAuthorization()
     }
     
+    func getRoute(destination : CLLocationCoordinate2D){
+        let request = MKDirectionsRequest()
+        request.destination = MKMapItem(placemark : MKPlacemark(coordinate : destination))
+        request.source = MKMapItem(placemark : MKPlacemark(coordinate : locationManager.location!.coordinate))
+        
+        let directions = MKDirections(request: request)
+        directions.calculate { (response:MKDirectionsResponse?, error:Error?) in
+            if(error == nil){
+                guard let response = response else{return}
+                let route = response.routes.first!
+                
+                for step in route.steps{
+                    print("Em \(step.distance) metros, \(step.instructions)")
+                }
+                
+            }else{
+                print(error!.localizedDescription)
+            }
+        }
+    }
+    
     func requestUserLocationAuthorization(){
         if CLLocationManager.locationServicesEnabled(){
             locationManager.delegate = self
@@ -159,7 +180,19 @@ extension TheatersMapViewController:MKMapViewDelegate{
         
         return annotationView
     }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        if control == view.leftCalloutAccessoryView{
+            getRoute(destination: view.annotation!.coordinate)
+        }else{
+            
+        }
+    }
 }
+
+
+
+
 
 extension TheatersMapViewController : CLLocationManagerDelegate{
     
