@@ -12,6 +12,7 @@ import MapKit
 class TheatersMapViewController: UIViewController {
     
     @IBOutlet weak var SerachBar: UISearchBar!
+    
 
     @IBOutlet weak var mapView: MKMapView!    
     var theaters: [Theater] = []
@@ -128,11 +129,33 @@ extension TheatersMapViewController:MKMapViewDelegate{
                 annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "Theater")
                 annotationView.image = UIImage(named: "theaterIcon")
                 annotationView.canShowCallout = true
+                
+                
+                let btLeft = UIButton(frame: CGRect(x:0,y:0,width:30,height:30))
+                btLeft.setImage(UIImage(named:"car"), for: .normal)
+                annotationView.leftCalloutAccessoryView = btLeft
+                
+                let btRight = UIButton(type: .infoLight)
+                annotationView.rightCalloutAccessoryView = btRight
             }
             else{
                 annotationView.annotation = annotation
             }
+        }else if annotation is MKPointAnnotation{
+            annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "POI")
+            
+            if annotationView == nil{
+                annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "POI")
+                (annotationView as! MKPinAnnotationView).pinTintColor = .blue
+                (annotationView as! MKPinAnnotationView).animatesDrop = true
+                annotationView.canShowCallout = true
+            }
+            else{
+                annotationView.annotation = annotation
+            }
+
         }
+        
         
         return annotationView
     }
@@ -151,14 +174,37 @@ extension TheatersMapViewController : CLLocationManagerDelegate{
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
         print(userLocation.location!.speed)
         
-        let region  = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 100, 100)
-        mapView.setRegion(region, animated: true)
+       // let region  = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 100, 100)
+       // mapView.setRegion(region, animated: true)
     }
     
 }
 
 extension TheatersMapViewController:UISearchBarDelegate{
-    func searchBarResultsListButtonClicked(_ searchBar: UISearchBar) {
-        //searchBar.text
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let request = MKLocalSearchRequest()
+        request.naturalLanguageQuery = searchBar.text
+        request.region = mapView.region
+        let search = MKLocalSearch(request: request)
+        search.start { (response :MKLocalSearchResponse?, error:Error?) in
+            if(error == nil){
+                guard let response = response else{return}
+                var placeMarks: [MKPointAnnotation] = []
+                for item in response.mapItems{
+                    let annotation = MKPointAnnotation()
+                    annotation.coordinate = item.placemark.coordinate
+                    annotation.title = item.name
+                    annotation.subtitle = item.phoneNumber
+                    placeMarks.append(annotation)
+                }
+                self.mapView.removeAnnotations(self.mapView.annotations)
+                self.mapView.addAnnotations(placeMarks)
+                
+            }else{
+                print("Deu Erro:", error!.localizedDescription)
+            }
+            searchBar.resignFirstResponder()
+        }
     }
 }
