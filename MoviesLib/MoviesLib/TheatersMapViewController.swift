@@ -77,7 +77,7 @@ class TheatersMapViewController: UIViewController {
             let coordinate = CLLocationCoordinate2D(latitude: theater.latitude, longitude: theater.longitude)
             let annotation = TheaterAnnotation(coordinate: coordinate)
             annotation.title = theater.name
-            annotation.subtitle = theater.address
+            annotation.subtitle = theater.url
             mapView.addAnnotation(annotation)
         }
         mapView.showAnnotations(mapView.annotations, animated: true)
@@ -190,8 +190,11 @@ extension TheatersMapViewController:MKMapViewDelegate{
             mapView.removeOverlays(mapView.overlays)
             mapView.deselectAnnotation(view.annotation!, animated: true)
         }else{
-            
+            let vc = storyboard?.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
+            vc.url = view.annotation!.subtitle!
+            present(vc, animated: true,completion: nil)
         }
+        mapView.deselectAnnotation(view.annotation!, animated: true)
     }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {

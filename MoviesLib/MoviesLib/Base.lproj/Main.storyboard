@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -311,6 +312,83 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZYI-cu-k45" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1441.875" y="430.98591549295776"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="yO9-c5-f9b">
+            <objects>
+                <viewController storyboardIdentifier="WebViewController" id="V4j-0A-hl2" customClass="WebViewController" customModule="MoviesLib" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PIx-W9-LOw"/>
+                        <viewControllerLayoutGuide type="bottom" id="S8P-nF-X4b"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Yg7-7g-RwH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NMC-Kt-3Rw">
+                                <rect key="frame" x="0.0" y="47" width="320" height="477"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n86-Bi-kfB">
+                                <rect key="frame" x="16" y="20" width="41" height="30"/>
+                                <state key="normal" title="Voltar"/>
+                                <connections>
+                                    <action selector="Back:" destination="V4j-0A-hl2" eventType="touchUpInside" id="dI7-30-wd7"/>
+                                </connections>
+                            </button>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QbJ-4b-TWc">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="5fj-Et-Kfh"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem systemItem="rewind" id="ssw-5B-Gih">
+                                        <connections>
+                                            <action selector="goBack" destination="NMC-Kt-3Rw" id="Eyn-PC-P3n"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="0J7-9F-6Xp"/>
+                                    <barButtonItem title="JS" id="a27-cy-KEw">
+                                        <connections>
+                                            <action selector="runJS:" destination="V4j-0A-hl2" id="lgX-yM-IBt"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="gZp-Ja-yFQ"/>
+                                    <barButtonItem systemItem="fastForward" id="yBj-mi-9EX">
+                                        <connections>
+                                            <action selector="goForward" destination="NMC-Kt-3Rw" id="bcI-G8-B4G"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="f46-A8-TiJ">
+                                <rect key="frame" x="142" y="265.5" width="37" height="37"/>
+                                <color key="color" red="0.15777088689586072" green="0.18426089910874555" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="QbJ-4b-TWc" firstAttribute="top" secondItem="NMC-Kt-3Rw" secondAttribute="bottom" id="4Dq-3w-1b2"/>
+                            <constraint firstItem="S8P-nF-X4b" firstAttribute="top" secondItem="QbJ-4b-TWc" secondAttribute="bottom" id="JW7-v2-Z0e"/>
+                            <constraint firstItem="NMC-Kt-3Rw" firstAttribute="top" secondItem="PIx-W9-LOw" secondAttribute="bottom" constant="27" id="Nq8-lB-JHg"/>
+                            <constraint firstItem="f46-A8-TiJ" firstAttribute="centerX" secondItem="Yg7-7g-RwH" secondAttribute="centerX" id="OSK-Bb-fZi"/>
+                            <constraint firstItem="n86-Bi-kfB" firstAttribute="top" secondItem="PIx-W9-LOw" secondAttribute="bottom" id="QDb-90-GYp"/>
+                            <constraint firstAttribute="trailing" secondItem="QbJ-4b-TWc" secondAttribute="trailing" id="e1J-v2-sOf"/>
+                            <constraint firstItem="NMC-Kt-3Rw" firstAttribute="leading" secondItem="Yg7-7g-RwH" secondAttribute="leading" id="eSD-7t-5nF"/>
+                            <constraint firstAttribute="trailing" secondItem="NMC-Kt-3Rw" secondAttribute="trailing" id="gKp-4V-LTb"/>
+                            <constraint firstItem="f46-A8-TiJ" firstAttribute="centerY" secondItem="Yg7-7g-RwH" secondAttribute="centerY" id="o7Y-TZ-F05"/>
+                            <constraint firstItem="QbJ-4b-TWc" firstAttribute="leading" secondItem="Yg7-7g-RwH" secondAttribute="leading" id="qVm-wS-3bI"/>
+                            <constraint firstItem="n86-Bi-kfB" firstAttribute="leading" secondItem="Yg7-7g-RwH" secondAttribute="leadingMargin" id="ucm-o0-HEx"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="loading" destination="f46-A8-TiJ" id="NAB-Dl-ToV"/>
+                        <outlet property="webView" destination="NMC-Kt-3Rw" id="efa-mR-Vs2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P6j-VM-8jj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2229.375" y="436.26760563380282"/>
         </scene>
     </scenes>
     <resources>

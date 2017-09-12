@@ -46,6 +46,7 @@
 		AC8CEF6D1F60AD990063F117 /* TheatersMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8CEF6C1F60AD990063F117 /* TheatersMapViewController.swift */; };
 		AC8CEF6F1F60AFA50063F117 /* Theaters.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8CEF6E1F60AFA50063F117 /* Theaters.swift */; };
 		AC8CEF711F60BCC80063F117 /* TheaterAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8CEF701F60BCC80063F117 /* TheaterAnnotation.swift */; };
+		ACFE7E0B1F6761B400E075DB /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFE7E0A1F6761B400E075DB /* WebViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +91,7 @@
 		AC8CEF6C1F60AD990063F117 /* TheatersMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TheatersMapViewController.swift; sourceTree = "<group>"; };
 		AC8CEF6E1F60AFA50063F117 /* Theaters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Theaters.swift; path = ../Theaters.swift; sourceTree = "<group>"; };
 		AC8CEF701F60BCC80063F117 /* TheaterAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TheaterAnnotation.swift; sourceTree = "<group>"; };
+		ACFE7E0A1F6761B400E075DB /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 				0778E3C31E88EEE700BF38C5 /* images */,
 				0703AD921E854AE4001FB5FD /* movies.json */,
 				AC8CEF571F60AC230063F117 /* theaters.xml */,
+				ACFE7E0A1F6761B400E075DB /* WebViewController.swift */,
 				07780D4C1E6D860E00BC3630 /* AppDelegate.swift */,
 				0778E36E1E88B48500BF38C5 /* Movie.swift */,
 				07780D4E1E6D860E00BC3630 /* MovieViewController.swift */,
@@ -281,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0778E3711E88D4DB00BF38C5 /* MovieTableViewCell.swift in Sources */,
+				ACFE7E0B1F6761B400E075DB /* WebViewController.swift in Sources */,
 				0703AD971E8553B2001FB5FD /* MoviesTableViewController.swift in Sources */,
 				AC8CEF711F60BCC80063F117 /* TheaterAnnotation.swift in Sources */,
 				07780D4F1E6D860E00BC3630 /* MovieViewController.swift in Sources */,
