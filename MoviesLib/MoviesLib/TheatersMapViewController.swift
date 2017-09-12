@@ -42,6 +42,8 @@ class TheatersMapViewController: UIViewController {
                 for step in route.steps{
                     print("Em \(step.distance) metros, \(step.instructions)")
                 }
+                self.mapView.add(route.polyline, level: .aboveRoads)
+                self.mapView.showAnnotations(self.mapView.annotations, animated: true)
                 
             }else{
                 print(error!.localizedDescription)
@@ -184,8 +186,22 @@ extension TheatersMapViewController:MKMapViewDelegate{
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.leftCalloutAccessoryView{
             getRoute(destination: view.annotation!.coordinate)
+            
+            mapView.removeOverlays(mapView.overlays)
+            mapView.deselectAnnotation(view.annotation!, animated: true)
         }else{
             
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if overlay is MKPolyline{
+            let renderer = MKPolylineRenderer(overlay: overlay)
+            renderer.strokeColor = .blue
+            renderer.lineWidth = 6.0
+            return renderer
+        }else{
+            return MKOverlayRenderer(overlay: overlay)
         }
     }
 }
